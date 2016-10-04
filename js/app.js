@@ -7,7 +7,7 @@
     $('#listings').empty();
 
     for (var image of images) {
-      var $col = $('<div class="col s6">');
+      var $col = $('<div class="col s6 m4">');
       var $card = $('<div class="card hoverable">');
       var $content = $('<div class="card-content center">');
       var $title = $('<h6 class="card-title truncate">');
@@ -23,8 +23,8 @@
       var $picture = $('<img class="picture">');
 
       $picture.attr({
-        src: image.picture,
-        alt: `${image.picture} Picture`
+        src: image.thumbURL,
+        alt: `${image.thumbURL}`
       });
 
       $content.append($title, $picture);
@@ -33,7 +33,7 @@
       var $action = $('<div class="card-action center">');
       var $selected = $('<a class="waves-effect waves-light btn modal-trigger">');
 
-      $selected.attr('href', `#${image.id}`);
+      $selected.attr('href', `index.html?img=${image.imageURL}`);
       $selected.text('Select');
 
       $action.append($selected);
@@ -64,7 +64,7 @@
 
     // The object we use to start the AJAX request using JQuery's format
     let requestObject = {
-      url: `https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=5b7fd66b51d24258c6135f2647adfb3f&per_page=10&format=json&nojsoncallback=1`,
+      url: `https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=5b7fd66b51d24258c6135f2647adfb3f&extras=url_q,url_c&per_page=30&format=json&nojsoncallback=1`,
       method: "GET",
       success: handleSuccess,
       error: handleError
@@ -73,25 +73,34 @@
     // Actually start the AJAX request
     $.ajax(requestObject);
   }
+
   // The event handler for a successful ajax request, used in doAjax
   function handleSuccess(data) {
-    console.log(data);
     let imageArray = data["photos"]["photo"];
 
-    images = [];
+    // images = [];
 
-    var Image = function(id, owner, title) {
+    var Image = function(id, height, width, owner, title, server, farm, secret, thumbURL, imageURL) {
       this.id = id || "";
+      this.height = Number(height) || 0;
+      this.width = Number(width) || 0;
       this.owner = owner || "";
-      this.title = title || "";
+      this.title = title || "Untitled";
+      this.server = server || "";
+      this.farm = farm || 0;
+      this.secret = secret || "";
+      this.thumbURL = thumbURL || "";
+      this.imageURL = imageURL || "";
     }
 
     for (var i = 0; i < imageArray.length; i++) {
-      var imageElement = new Image (imageArray[i].id, imageArray[i].owner,
-        imageArray[i].title);
+      var imageElement = new Image (imageArray[i].id, imageArray[i].height_c,
+        imageArray[i].width_c, imageArray[i].owner,
+        imageArray[i].title, imageArray[i].server, imageArray[i].farm,
+        imageArray[i].secret, imageArray[i].url_q, imageArray[i].url_c);
 
+      console.log(imageElement);
       images.push(imageElement);
-
     }
 
     renderImages();
@@ -99,7 +108,7 @@
 
   // The event handler for a failed ajax request, used in doAjax
   function handleError(err) {
-    console.log("FAILURE, BITCH! FAILURE!");
+    console.log("FAILURE, WILL ROBINSON! FAILURE!");
     console.log(err);
   }
 

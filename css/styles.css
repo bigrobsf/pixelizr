@@ -18,6 +18,15 @@ main {
   max-width: 100%;
 }
 
+.footer-row {
+  margin: 0;
+}
+
 #flickr {
   text-decoration: underline;
+}
+
+#footer {
+  margin: 0;
+  padding: 0;
 }
