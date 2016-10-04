@@ -19,7 +19,6 @@ function buildGrid(event) {
 
   let dimension = document.getElementById('grid-size').value;
   dimension = Number(dimension);
-  console.log(dimension);
 
   let $grid = $('#grid');
 
@@ -60,29 +59,25 @@ function buildGrid(event) {
 function buildColorPallet(colors) {
   if (colors === undefined){
     colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'indigo',
-    'violet', 'brown', 'black', 'gray', 'white'];
+    'violet', 'brown', 'black', 'gray', 'silver', 'white', 'maroon', 'olive', 'navy',
+    'purple', 'fuchsia', 'lime', 'teal'];
   }
 
   let $pallet = $('#pallet');
 
-  let height = Math.floor(colors.length / 3);
-  let width = Math.floor(colors.length / height);
+  let numColors = colors.length;
+  console.log(numColors);
 
-  for (var row = 0; row < height; row++) {
-    var $row = $('<div class="pallet-row">');
+  for (var i = 0; i < numColors; i++) {
+    var $inkWell = $('<div class="pallet-color">');
 
-    for (var col = 0; col < width; col++) {
-      var $inkWell = $('<div class="pallet-color">');
-
-      $inkWell.appendTo($row);
-    }
-    $row.appendTo($pallet);
+    $inkWell.appendTo($pallet);
   }
 
 
   var palletArray = document.getElementsByClassName('pallet-color');
 
-  for (let i = 0; i < colors.length; i++) {
+  for (let i = 0; i < numColors; i++) {
     palletArray[i].style.backgroundColor = colors[i];
 
   }
