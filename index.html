@@ -1,95 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script>
-    window.onload = function() {
-      var url = window.location.search.split('=');
-      var directURL = url[1];
-
-      var windowObjectReference;
-
-      function openRequestedPopup() {
-        windowObjectReference = window.open(
-          directURL,
-          ""
-        );
-      }
-      openRequestedPopup();
-    }
-  </script>
-  <title>Pixelizr</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="css/materialize.min.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <!-- <div class="navbar-fixed">
-    <nav class="indigo">
-      <div class="nav-wrapper">
-        <div class="container">
-          <a href="index.html" class="brand-logo center">
-            <i class="material-icons left">view_module</i>
-            Pixelizr
-          </a>
-        </div>
-      </div>
-    </nav>
-  </div>
-
-  <main class="container">
-    <div class="row">
-      <form>
-        <div class="col offset-s2 s7">
-          <div class="input-field">
-            <input type="text" placeholder="Enter grid size (default is 20, min 10, max 30)"
-            id="search" name="search" autofocus="true">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pixelizr</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <div class="navbar-fixed">
+      <nav class="indigo">
+        <div class="nav-wrapper">
+          <div class="container">
+            <a href="index.html" class="brand-logo center">
+              <i class="material-icons left">view_module</i>
+              Pixelizr
+            </a>
           </div>
         </div>
-
-        <div class="col s3">
-          <button class="btn-large waves-effect waves-light" type="submit" name="action">
-            <i class="material-icons right">fast_forward</i>
-            Go!
-          </button>
-        </div>
-      </form>
+      </nav>
     </div>
 
-    <div id="grid" class="row"></div>
-  </main>
+    <main class="container">
+      <div class="row">
+        <form>
+          <div class="col offset-s2 s7">
+            <div class="input-field">
+              <input type="text" placeholder="Enter grid size (default is 40, min 30, max 50)"
+              id="grid-size" name="grid-size" autofocus="true">
+            </div>
+          </div>
 
-  <footer class="page-footer indigo" id="footer">
-    <div class="container">
-      <div class="row footer-row">
-        <div class="col s12">
-          <h5 class="grey-text text-lighten-4">
-            <i class="material-icons left">view_module</i>
-            Pixelizr
-          </h5>
-
-          <p class="grey-text text-lighten-4">
-            Image retrieval courtesy of the
-            <a id="flickr" class="grey-text text-lighten-4" href="https://www.flickr.com/services/api/">
-              Flickr API
-            </a>
-          </p>
-        </div>
+          <div class="col s3">
+            <button class="btn-large waves-effect waves-light" type="submit" name="action">
+              <i class="material-icons right">fast_forward</i>
+              Go!
+            </button>
+          </div>
+        </form>
       </div>
-    </div>
 
-    <div class="footer-copyright">
+      <div class="row"> <!-- main row -->
+        <div class="col s12 m7"> <!-- holds the art grid -->
+          <div id="grid" class="col s12 m12 no-padding"></div>
+        </div>
+
+        <div class="col m1"></div>
+
+        <div class="col s12 m4"> <!-- holds the pallet and current color -->
+          <div id="pallet" class="col s12 m12"></div>
+
+          <div id="current-color" class="col s12 m12"></div>
+        </div>
+
+      </div> <!-- end main row -->
+    </main>
+
+    <footer class="page-footer indigo lighten-1" id="footer">
       <div class="container">
-        © 2016 Rob Conner
+        <div class="row footer-row">
+          <div class="col l6 s12">
+            <h5 class="grey-text text-lighten-4">
+              <i class="material-icons left">view_module</i>
+              Pixelizr
+            </h5>
+          </div>
+          <div class="col l6 push-l2 s12">
+            <p class="grey-text text-lighten-4">
+              Image retrieval courtesy of the
+              <a id="flickr" class="grey-text text-lighten-4" href="https://www.flickr.com/services/api/">
+                Flickr API
+              </a>
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
 
-  <script src="js/jquery-2.2.4.min.js"></script>
-  <script src="js/materialize.min.js"></script>
-  <script src="js/app.js"></script>
-    <script src="js/grid.js"></script> -->
-</body>
+      <div class="footer-copyright indigo darken-1">
+        <div class="container">
+          © 2016 Rob Conner
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+    <script src="js/grid.js"></script>
+  </body>
 </html>

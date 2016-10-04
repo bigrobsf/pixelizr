@@ -1,9 +1,11 @@
 "use strict";
 
 // MAIN
-window.onload = function main(){
+window.onload = function main() {
   buildColorPallet(undefined);
-  buildGrid();
+
+  document.getElementsByTagName('button')[0].addEventListener('click', buildGrid);
+
   activateGrid();
 };
 
@@ -11,20 +13,46 @@ let brushColor = 'white';
 
 //==============================================================================
 // generate grid
-function buildGrid(height = 20, width = 20) {
+function buildGrid(event) {
+  $('#grid').empty();
+  event.preventDefault();
+
+  let dimension = document.getElementById('grid-size').value;
+  dimension = Number(dimension);
+  console.log(dimension);
+
   let $grid = $('#grid');
 
+  if (typeof dimension === "number" && dimension >= 30 && dimension <= 50) {
+    var height = dimension;
+    var width = dimension;
+  } else {
+    var height = 40;
+    var width = 40;
+  }
+
+  $("#grid").css("width", function(dimension) {
+    return dimension * 10;
+  });
+
+  $("#grid").addClass("border");
+
+  // $("#grid").css("min-width", function(dimension) {
+  //   return (dimension * 10 + 20);
+  // });
+
   for (var row = 0; row < height; row++) {
-    var $row = $('<div class="grid-row"');
+    var $row = $('<div class="grid-row">');
 
     for (var col = 0; col < width; col++) {
-      var $pixel = $('div class="pixel"');
+      var $pixel = $('<div class="pixel">');
 
       $pixel.appendTo($row);
     }
     $row.appendTo($grid);
   }
 
+  document.getElementById('grid-size').value = "";
 }
 
 //==============================================================================
@@ -35,15 +63,28 @@ function buildColorPallet(colors) {
     'violet', 'brown', 'black', 'gray', 'white'];
   }
 
-  var inkWellArray = document.getElementsByClassName('pallet-color');
+  let $pallet = $('#pallet');
 
-  if (colors.length === inkWellArray.length) {
-    for (let i = 0; i < colors.length; i++) {
-      inkWellArray[i].style.backgroundColor = colors[i];
+  let height = Math.floor(colors.length / 3);
+  let width = Math.floor(colors.length / height);
+
+  for (var row = 0; row < height; row++) {
+    var $row = $('<div class="pallet-row">');
+
+    for (var col = 0; col < width; col++) {
+      var $inkWell = $('<div class="pallet-color">');
+
+      $inkWell.appendTo($row);
     }
-  } else {
-    console.log("The number of colors doesn't match the number of circles.")
-    console.log("I'm terribly sorry, but the world must end.");
+    $row.appendTo($pallet);
+  }
+
+
+  var palletArray = document.getElementsByClassName('pallet-color');
+
+  for (let i = 0; i < colors.length; i++) {
+    palletArray[i].style.backgroundColor = colors[i];
+
   }
 
   var pallet = document.getElementById('pallet');
