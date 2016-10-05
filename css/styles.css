@@ -1,3 +1,9 @@
+/*
+  ==============================================================
+  main
+  ==============================================================
+*/
+
 body {
   background: #f5f5f5;
   display: flex;
@@ -10,11 +16,48 @@ main {
 }
 
 main.container {
-  width: 95%;
+  width: 90%;
 }
+
+/*
+  ==============================================================
+  header
+  ==============================================================
+*/
 
 .navbar-fixed {
   margin-bottom: 15px;
+}
+
+/*
+  ==============================================================
+  buttons
+  ==============================================================
+*/
+
+button.clr {
+  background-color: #FF5252;
+}
+
+#save {
+  margin-bottom: 20px;
+}
+
+/*
+  ==============================================================
+  images
+  ==============================================================
+*/
+
+canvas {
+  border: 2px solid black;
+  width: 100%;
+  height: 98%;
+}
+
+#test1 {
+  height: auto;
+  width: auto;
 }
 
 .image {
@@ -22,13 +65,11 @@ main.container {
   max-width: 100%;
 }
 
-.footer-row {
-  margin: 0;
-}
-
-#save {
-  margin-bottom: 20px;
-}
+/*
+  ==============================================================
+  footer
+  ==============================================================
+*/
 
 #flickr {
   text-decoration: underline;
@@ -39,18 +80,22 @@ main.container {
   padding: 0;
 }
 
-.pixel {
-	border: 1px solid #DDD;
-	background-color: #FFF;
-	width: 10px;
-	height: 10px;
-	float:left;
+.footer-row {
+  margin: 0;
 }
 
-#grid {
-	display: table;
-	margin: 0 auto;
-  padding: 0;
+/*
+  ==============================================================
+  grid
+  ==============================================================
+*/
+
+.pixel {
+  border: 1px solid #DDD;
+  background-color: #FFF;
+  width: 10px;
+  height: 10px;
+  float:left;
 }
 
 .border {
@@ -63,6 +108,28 @@ main.container {
 	display: table-row-group;
 }
 
+#grid {
+  display: table;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/*
+  ==============================================================
+  pallet
+  ==============================================================
+*/
+
+#current-color {
+  display: table;
+  width: 124px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 5px;
+  margin: 20px 45px;
+  background-color: #FFF;
+}
+
 #pallet {
 	display: table;
 	width: 174px;
@@ -70,16 +137,6 @@ main.container {
   margin: 0 20px;
 	background-color: #DDD;
 	border-radius: 5px;
-}
-
-#current-color {
-	display: table;
-	width: 124px;
-	height: 40px;
-	border: 2px solid #000;
-	border-radius: 5px;
-  margin: 20px 45px;
-	background-color: #FFF;
 }
 
 .pallet-color {
@@ -92,4 +149,8 @@ main.container {
 	border-radius: 50%;
 	margin: 5px;
   float: left;
+}
+
+.pallet-color:hover {
+  border: 2px solid: #FFF;
 }

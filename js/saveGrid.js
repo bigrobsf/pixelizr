@@ -3,7 +3,7 @@
 function serializeGrid() {
   event.preventDefault();
 
-  let fileName = document.getElementById('file-name').value;
+  let fileName = document.getElementById('save-name').value;
 
   let grid = [];
 
@@ -39,14 +39,14 @@ function serializeGrid() {
 
   localStorage.setItem(fileName, JSON.stringify(grid));
 
-  document.getElementById('file-name').value = "";
+  document.getElementById('save-name').value = "";
 }
 
 // Retrieve the object from storage - assumed to be square for now
 function deserializeGrid() {
   event.preventDefault();
 
-  let fileName = document.getElementById('file-name').value;
+  let fileName = document.getElementById('open-name').value;
   var retrievedObject = localStorage.getItem(fileName);
   var parsedObject = JSON.parse(retrievedObject);
 
@@ -85,5 +85,5 @@ function deserializeGrid() {
     $row.appendTo($grid);
   }
 
-  document.getElementById('file-name').value = "";
+  document.getElementById('open-name').value = "";
 }
