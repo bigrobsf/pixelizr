@@ -78,8 +78,6 @@
   function handleSuccess(data) {
     let imageArray = data["photos"]["photo"];
 
-    // images = [];
-
     var Image = function(id, height, width, owner, title, server, farm, secret, thumbURL, imageURL) {
       this.id = id || "";
       this.height = Number(height) || 0;
@@ -100,15 +98,18 @@
         imageArray[i].secret, imageArray[i].url_q, imageArray[i].url_c);
 
       console.log(imageElement);
-      images.push(imageElement);
-    }
 
+      if (imageArray[i].height_c > 0 || imageArray[i].width_c > 0) {
+        images.push(imageElement);
+      }
+    }
+    console.log(imageArray.length, images.length);
     renderImages();
   }
 
   // The event handler for a failed ajax request, used in doAjax
   function handleError(err) {
-    console.log("FAILURE, WILL ROBINSON! FAILURE!");
+    console.log("AJAX FAILURE, WILL ROBINSON! FAILURE!");
     console.log(err);
   }
 

@@ -18,10 +18,10 @@
           );
         }
         openRequestedPopup();
-        imgTest1(directURL);
+        imgTest(directURL);
       }
 
-      function imgTest1(directURL) {
+      function imgTest(directURL) {
         var ctx = document.getElementById('test1');
         if (ctx.getContext) {
 
@@ -37,7 +37,6 @@
               //draw a box over the top
               ctx.fillStyle = "rgba(200, 0, 0, 0.5)";
               ctx.fillRect(0, 0, 500, 500);
-
           };
           img1.src = directURL;
         }
@@ -50,7 +49,7 @@
     <link rel="stylesheet" href="css/materialize.min.css">
     <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body>
+  <body onload="imgTest();">
     <canvas id="test1"></canvas>
   </body>
 </html>
