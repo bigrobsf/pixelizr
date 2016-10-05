@@ -53,23 +53,37 @@ function deserializeGrid() {
   console.log('retrievedObject: ', parsedObject);
 
   var $grid = $('#grid');
+  $('#grid').empty();
+
   var dimension = Math.sqrt(parsedObject.length);
 
-  // for (let row = 0; row < dimension; row++) {
-  //   var $currentPixel = $($currentRow.children()[0]);
-  //
-  //   for (let col = 0; col < dimension; col++) {
-  //     var borderColor = $currentPixel.css('border-color');
-  //     var bgColor = $currentPixel.css('background-color');
-  //
-  //     var pixelElement = new PixelBox(row, col, borderColor, bgColor);
-  //     grid.push(pixelElement);
-  //
-  //     $currentPixel = $currentPixel.next();
-  //   }
-  //
-  //   $currentRow = $currentRow.next();
-  // }
+  $("#grid").css("width", function(dimension) {
+    return dimension * 10;
+  });
+
+  $("#grid").addClass("border");
+
+  var objectNum = 0;
+
+  for (let row = 0; row < dimension; row++) {
+     var $row = $('<div class="grid-row">');
+
+    for (let col = 0; col < dimension; col++) {
+      var $pixel = $('<div class="pixel">');
+
+      var borderColor = parsedObject[objectNum].borderColor;
+      var bgColor = parsedObject[objectNum].bgColor;
+      console.log(borderColor, bgColor);
+
+      $pixel.css('border-color', borderColor);
+      $pixel.css('background-color', bgColor);
+
+      $pixel.appendTo($row);
+      objectNum++;
+    }
+
+    $row.appendTo($grid);
+  }
 
   document.getElementById('file-name').value = "";
 }

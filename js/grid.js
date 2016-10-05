@@ -59,9 +59,9 @@ function buildGrid(event) {
 // set the pallet colors and add event listener
 function buildColorPallet(colors) {
   if (colors === undefined){
-    colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'indigo',
-    'violet', 'brown', 'black', 'gray', 'silver', 'white', 'maroon', 'olive', 'navy',
-    'purple', 'fuchsia', 'lime', 'teal'];
+    colors = ['maroon', 'brown','red', 'orange', 'gold', 'yellow', 'olive',
+    'green', 'lime', 'navy', 'blue', 'cyan', 'purple', 'fuchsia',
+    'violet', 'indigo', 'teal', 'silver', 'black', 'gray', 'white'];
   }
 
   let $pallet = $('#pallet');
