@@ -10,7 +10,7 @@ main {
 }
 
 main.container {
-  width: 80%;
+  width: 95%;
 }
 
 .navbar-fixed {
@@ -24,6 +24,10 @@ main.container {
 
 .footer-row {
   margin: 0;
+}
+
+#save {
+  margin-bottom: 20px;
 }
 
 #flickr {

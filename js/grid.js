@@ -5,7 +5,8 @@ window.onload = function main() {
   buildColorPallet(undefined);
 
   document.getElementsByTagName('button')[0].addEventListener('click', buildGrid);
-
+  document.getElementsByTagName('button')[1].addEventListener('click', serializeGrid);
+  document.getElementsByTagName('button')[2].addEventListener('click', deserializeGrid);
   activateGrid();
 };
 
@@ -66,7 +67,6 @@ function buildColorPallet(colors) {
   let $pallet = $('#pallet');
 
   let numColors = colors.length;
-  console.log(numColors);
 
   for (var i = 0; i < numColors; i++) {
     var $inkWell = $('<div class="pallet-color">');
