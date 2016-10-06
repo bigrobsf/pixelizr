@@ -12,6 +12,7 @@
 
         canvasImageTest(directURL);
 
+        // opens retrieved image in HTML Canvas element
         function canvasImageTest(imageURL) {
           var canvas = document.getElementById("image-canvas");
           var ctx = canvas.getContext('2d');
@@ -24,25 +25,25 @@
             ctx.drawImage(img,0,0);
             // ctx.fillStyle = "red";
             // ctx.fillRect(0,0,50,50);
-            var imgd = ctx.getImageData(400, 400, 100, 100);
-            var blockData = imgd["data"];
-            console.log(ctx);
-            console.log(blockData);
-            console.log(getAvgBlockColor(blockData));
+            // var imgd = ctx.getImageData(400, 400, 100, 100);
+            // var blockData = imgd["data"];
+            // console.log(ctx);
+            // console.log(blockData);
+            // console.log(getAvgBlockColor(blockData));
+            console.log(getAllBlockAverages(ctx, img));
           }
 
           img.src = imageURL;
         } // end function
 
+        // iterates through all blocks of calculated number of pixels
         function getAllBlockAverages(ctx, img) {
           var averagedBlocks = [];
           var width = img.width;
           var height = img.height;
           var avgBlockColor = "";
           var numBlocks = 50;
-          var blockSize = 0;
-          var numRows = 0;
-          var numCols = 0;
+          var blockSize = numRows = numCols = 0;
 
           if (width > height) {
             blockSize = Math.floor(width / numBlocks);
@@ -53,22 +54,24 @@
             numRows = numBlocks;
             numCols = Math.floor(width / blockSize);
           }
-
+          console.log("w, h, blockSize, numBlocks, rows, cols: ", width, height, blockSize, numBlocks, numRows, numCols);
           for (var row = 0; row < numRows; row++) {
 
             for (var col = 0; col < numCols; col++) {
-              var imgd = ctx.getImageData(row * blockSize, col * blockSize, blockSize, blockSize;
+              var imgd = ctx.getImageData(row * blockSize, col * blockSize, blockSize, blockSize);
               var blockData = imgd["data"];
               avgBlockColor = getAvgBlockColor(blockData);
               averagedBlocks.push(avgBlockColor);
             }
           }
+          return averagedBlocks;
         } // end function
 
+        // calculates average color for a block of image pixels
         function getAvgBlockColor(blockData) {
           var red = green = blue = i = count = 0;
           var length = blockData.length;
-          console.log("length = ", length, i);
+          // console.log("length = ", length);
 
           while (i < length) {
             red   += blockData[i];
@@ -85,6 +88,7 @@
           if (red > 255 || green > 255 || blue > 255) {
             console.log("RGB value out of range");
           } else {
+            // console.log(((red << 16) | (green << 8) | blue).toString(16));
             return ((red << 16) | (green << 8) | blue).toString(16); // found online. Have no idea how it works.
           }
         } // end function
