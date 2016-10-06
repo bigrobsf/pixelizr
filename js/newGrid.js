@@ -4,9 +4,9 @@
 window.onload = function main() {
   buildColorPallet(undefined);
 
-  document.getElementsByTagName('button')[0].addEventListener('click', buildGrid);
-  document.getElementsByTagName('button')[1].addEventListener('click', serializeGrid);
-  document.getElementsByTagName('button')[2].addEventListener('click', deserializeGrid);
+  document.getElementById('new-btn').addEventListener('click', buildGrid);
+  document.getElementById('save-btn').addEventListener('click', serializeGrid);
+  document.getElementById('open-btn').addEventListener('click', deserializeGrid);
   activateGrid();
 };
 
@@ -36,10 +36,7 @@ function buildGrid(event) {
   });
 
   $("#grid").addClass("border");
-
-  // $("#grid").css("min-width", function(dimension) {
-  //   return (dimension * 10 + 20);
-  // });
+  $("#grid").addClass("z-depth-2");
 
   for (var row = 0; row < height; row++) {
     var $row = $('<div class="grid-row">');
@@ -59,9 +56,9 @@ function buildGrid(event) {
 // set the pallet colors and add event listener
 function buildColorPallet(colors) {
   if (colors === undefined){
-    colors = ['red', 'orange', 'yellow', 'green', 'cyan', 'blue', 'indigo',
-    'violet', 'brown', 'black', 'gray', 'silver', 'white', 'maroon', 'olive', 'navy',
-    'purple', 'fuchsia', 'lime', 'teal'];
+    colors = ['maroon', 'brown','red', 'orange', 'gold', 'yellow', 'olive',
+    'green', 'lime', 'navy', 'blue', 'cyan', 'purple', 'fuchsia',
+    'violet', 'indigo', 'teal', 'silver', 'black', 'gray', 'white'];
   }
 
   let $pallet = $('#pallet');
@@ -74,6 +71,8 @@ function buildColorPallet(colors) {
     $inkWell.appendTo($pallet);
   }
 
+  $('#pallet').addClass("z-depth-2");
+  $("#current-color").addClass("z-depth-2");
 
   var palletArray = document.getElementsByClassName('pallet-color');
 
