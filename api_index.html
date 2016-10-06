@@ -23,18 +23,50 @@
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img,0,0);
+
             var pixelationInfo = createPixelationInfo(ctx, img.width, img.height);
-            console.log(pixelationInfo);
-            // var pixelatedImg = buildPixelatedImg(pixelationInfo, img.width, img.height);
+            buildPixelatedImg(pixelationInfo);
           }
 
           img.src = imageURL;
         } // end function
 
+        // generates test image as divs
+        function buildPixelatedImg(pixelationInfo) {
+          var imgData   = pixelationInfo[0];
+          var blockSize = pixelationInfo[1];
+          var numCols   = pixelationInfo[2];
+          var numRows   = pixelationInfo[3];
 
-        // function buildPixelatedImg(pixelationInfo, width, height) {
-        //
-        // }
+          var $grid = $('#grid');
+          $('#grid').empty();
+
+          $("#grid").css("width", blockSize * numCols);
+          $("#grid").css("height", blockSize * numRows);
+          // $("#grid").addClass("border");
+
+          var blockNum = 0;
+
+          for (var row = 0; row < numRows; row++) {
+            var $row = $('<div class="grid-row">');
+
+            for (var col = 0; col < numCols; col++) {
+              var $block = $('<div class="block">');
+              var red = imgData[blockNum][0];
+              var green = imgData[blockNum][1];
+              var blue = imgData[blockNum][2];
+
+              $block.css("background-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
+              $block.css("width", blockSize);
+              $block.css("height", blockSize);
+
+              $block.appendTo($row);
+              blockNum++;
+            }
+
+            $row.appendTo($grid);
+          }
+        } // end function
 
         // iterates through all blocks of calculated number of pixels
         function createPixelationInfo(ctx, width, height) {
@@ -52,25 +84,27 @@
             numRows = numBlocks;
             numCols = Math.floor(width / blockSize);
           }
-          console.log("w, h, blockSize, numBlocks, rows, cols: ",
+
+          console.log("w, h, blockSize, numBlocks, cols, rows: ",
             width, height, blockSize, numBlocks, numCols, numRows);
           for (var row = 0; row < numRows; row++) {
 
             for (var col = 0; col < numCols; col++) {
-              var imgd = ctx.getImageData(row * blockSize, col * blockSize, blockSize, blockSize);
+              var imgd = ctx.getImageData(col * blockSize, row * blockSize, blockSize, blockSize);
               var blockData = imgd["data"];
+
               avgBlockColor = getAvgBlockColor(blockData);
               averagedBlocks.push(avgBlockColor);
             }
           }
-          return [averagedBlocks, numCols, numRows];
+          
+          return [averagedBlocks, blockSize, numCols, numRows];
         } // end function
 
         // calculates average color for a block of image pixels
         function getAvgBlockColor(blockData) {
           var red = green = blue = i = count = 0;
           var length = blockData.length;
-          // console.log("length = ", length);
 
           while (i < length) {
             red   += blockData[i];
@@ -84,12 +118,7 @@
           green = Math.floor(green / count);
           blue  = Math.floor(blue / count);
 
-          if (red > 255 || green > 255 || blue > 255) {
-            console.log("RGB value out of range");
-          } else {
-            // found online. Have no idea how it works.
-            return ((red << 16) | (green << 8) | blue).toString(16);
-          }
+          return [red, green, blue];
         } // end function
       }
 
@@ -103,6 +132,7 @@
     <!-- <label>Image File:</label><br/>
     <input type="file" id="imageLoader" name="imageLoader"/> -->
     <canvas id="image-canvas"></canvas>
+    <div id="grid"></div>
     <script src="js/jquery-2.2.4.min.js"></script>
   </body>
 </html>
