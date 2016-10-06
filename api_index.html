@@ -10,10 +10,10 @@
         var url = window.location.search.split('=');
         var directURL = url[1];
 
-        canvasImageTest(directURL);
+        var canvasImg = openImgInCanvas(directURL);
 
         // opens retrieved image in HTML Canvas element
-        function canvasImageTest(imageURL) {
+        function openImgInCanvas(imageURL) {
           var canvas = document.getElementById("image-canvas");
           var ctx = canvas.getContext('2d');
           var img = new Image();
@@ -23,24 +23,22 @@
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img,0,0);
-            // ctx.fillStyle = "red";
-            // ctx.fillRect(0,0,50,50);
-            // var imgd = ctx.getImageData(400, 400, 100, 100);
-            // var blockData = imgd["data"];
-            // console.log(ctx);
-            // console.log(blockData);
-            // console.log(getAvgBlockColor(blockData));
-            console.log(getAllBlockAverages(ctx, img));
+            var pixelationInfo = createPixelationInfo(ctx, img.width, img.height);
+            console.log(pixelationInfo);
+            // var pixelatedImg = buildPixelatedImg(pixelationInfo, img.width, img.height);
           }
 
           img.src = imageURL;
         } // end function
 
+
+        // function buildPixelatedImg(pixelationInfo, width, height) {
+        //
+        // }
+
         // iterates through all blocks of calculated number of pixels
-        function getAllBlockAverages(ctx, img) {
+        function createPixelationInfo(ctx, width, height) {
           var averagedBlocks = [];
-          var width = img.width;
-          var height = img.height;
           var avgBlockColor = "";
           var numBlocks = 50;
           var blockSize = numRows = numCols = 0;
@@ -54,7 +52,8 @@
             numRows = numBlocks;
             numCols = Math.floor(width / blockSize);
           }
-          console.log("w, h, blockSize, numBlocks, rows, cols: ", width, height, blockSize, numBlocks, numRows, numCols);
+          console.log("w, h, blockSize, numBlocks, rows, cols: ",
+            width, height, blockSize, numBlocks, numCols, numRows);
           for (var row = 0; row < numRows; row++) {
 
             for (var col = 0; col < numCols; col++) {
@@ -64,7 +63,7 @@
               averagedBlocks.push(avgBlockColor);
             }
           }
-          return averagedBlocks;
+          return [averagedBlocks, numCols, numRows];
         } // end function
 
         // calculates average color for a block of image pixels
@@ -88,8 +87,8 @@
           if (red > 255 || green > 255 || blue > 255) {
             console.log("RGB value out of range");
           } else {
-            // console.log(((red << 16) | (green << 8) | blue).toString(16));
-            return ((red << 16) | (green << 8) | blue).toString(16); // found online. Have no idea how it works.
+            // found online. Have no idea how it works.
+            return ((red << 16) | (green << 8) | blue).toString(16);
           }
         } // end function
       }
