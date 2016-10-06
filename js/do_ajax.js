@@ -55,10 +55,7 @@
     }
   };
 
-  // MAIN
-  window.onload = function() {
-    document.getElementsByTagName('button')[0].addEventListener('click', doAjax);
-  }
+  window.onload = doAjax;
 
   function doAjax(event) {
     event.preventDefault();
@@ -105,6 +102,7 @@
       }
     }
     console.log(imageArray.length, images.length);
+    document.getElementById('listings').value = "";
     renderImages();
   }
 

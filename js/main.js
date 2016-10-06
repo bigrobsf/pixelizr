@@ -7,6 +7,10 @@ window.onload = function main() {
   document.getElementById('new-btn').addEventListener('click', buildGrid);
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
+  document.getElementById('browse-btn').addEventListener('click', function(){
+    window.open("file:///Users/rob/Documents/workspace/projects/pixelizr/api_call.html","");
+  });
+
   activateGrid();
 };
 
