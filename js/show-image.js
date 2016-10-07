@@ -1,7 +1,6 @@
 "use-strict";
 // opens retrieved image in HTML Canvas element
 function openImgInCanvas(imageURL) {
-  // var canvas = document.getElementById("image-canvas");
   var canvas = document.createElement("canvas");
   var ctx = canvas.getContext('2d');
   var img = new Image();
@@ -22,7 +21,6 @@ function openImgInCanvas(imageURL) {
 // generates test image as divs
 function buildPixelatedImg(pixelationInfo) {
   var imgData   = pixelationInfo[0];
-  // var blockSize = pixelationInfo[1];
   var blockSize = 10; // forces it to fit into my ui
   var numCols   = pixelationInfo[2];
   var numRows   = pixelationInfo[3];
@@ -30,9 +28,10 @@ function buildPixelatedImg(pixelationInfo) {
   var $grid = $('#grid');
   $('#grid').empty();
 
-  $("#grid").css("width", blockSize * numCols);
-  $("#grid").css("height", blockSize * numRows);
+  $("#grid").css("width", blockSize * numCols + 2);
+  $("#grid").css("height", blockSize * numRows + 2);
   $("#grid").addClass("z-depth-2");
+  $("#grid").addClass("border");
 
   var blockNum = 0;
 

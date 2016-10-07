@@ -65,7 +65,7 @@ function deserializeGrid() {
 
   $("#grid").css("width", 10 * numCols + 2);
   $("#grid").css("height", 10 * numRows + 2);
-
+  $("#grid").addClass("z-depth-2");
   $("#grid").addClass("border");
 
   var objectNum = 0;

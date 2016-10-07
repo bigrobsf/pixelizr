@@ -55,9 +55,9 @@ canvas {
   height: 98%;
 }
 
-#test1 {
-  height: auto;
-  width: auto;
+#preloader {
+  display: block;
+  margin: 0 auto;
 }
 
 .image {
