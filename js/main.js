@@ -127,6 +127,7 @@ function setColorIndicator() {
 function activateGrid() {
   var grid = document.getElementById('grid');
   grid.addEventListener('click', clickGridHandler);
+  grid.addEventListener('mousedown', mDownHandler);
 }
 
 //==============================================================================
@@ -145,4 +146,31 @@ function clickGridHandler(event) {
 function setPixelColor(pixel) {
   pixel.style.borderColor = brushColor;
   pixel.style.backgroundColor = brushColor;
+}
+
+//==============================================================================
+// event handler for painting events mouseover and mouseup
+function mDownHandler(event) {
+  if (event.target === event.currentTarget) {
+    return;
+  }
+
+  grid.addEventListener('mouseup', mUpHandler);
+  grid.addEventListener('mouseover', paintRoller);
+}
+
+//==============================================================================
+// event handler to remove the painting event listener
+function mUpHandler() {
+  grid.removeEventListener('mouseover', paintRoller);
+}
+
+//==============================================================================
+// event handler to paint pixels that the mouse passes over
+function paintRoller(event) {
+  if (event.target === event.currentTarget) {
+    return;
+  }
+
+  setPixelColor(event.target);
 }
