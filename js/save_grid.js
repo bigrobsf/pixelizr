@@ -1,5 +1,7 @@
 "use strict"
 
+//==============================================================================
+// save grid data to local storage
 function serializeGrid() {
   event.preventDefault();
 
@@ -33,16 +35,19 @@ function serializeGrid() {
     }
 
     $currentRow = $currentRow.next();
+    // console.log(borderColor, bgColor);
   }
 
-  console.log(JSON.stringify(grid));
+  // console.log(JSON.stringify(grid));
+  var jsonGrid = JSON.stringify(grid);
 
   localStorage.setItem(fileName, JSON.stringify(grid));
 
   document.getElementById('save-name').value = "";
 }
 
-// Retrieve the object from storage - assumed to be square for now
+//==============================================================================
+// retrieve grid data from local storage
 function deserializeGrid() {
   event.preventDefault();
 
@@ -50,30 +55,37 @@ function deserializeGrid() {
   var retrievedObject = localStorage.getItem(fileName);
   var parsedObject = JSON.parse(retrievedObject);
 
-  console.log('retrievedObject: ', parsedObject);
+  var lastObject = parsedObject[parsedObject.length - 1];
+  var numRows = lastObject.row + 1;
+  var numCols = lastObject.col + 1;
+  // console.log(lastObject, numRows, numCols);
+
 
   var $grid = $('#grid');
   $('#grid').empty();
 
   var dimension = Math.sqrt(parsedObject.length);
 
-  $("#grid").css("width", function(dimension) {
-    return dimension * 10;
-  });
-
+  $("#grid").css("width", 10 * numCols + 2);
+  $("#grid").css("height", 10 * numRows + 2);
+  $("#grid").addClass("z-depth-2");
   $("#grid").addClass("border");
 
   var objectNum = 0;
 
-  for (let row = 0; row < dimension; row++) {
+  for (let row = 0; row < numRows; row++) {
      var $row = $('<div class="grid-row">');
 
-    for (let col = 0; col < dimension; col++) {
+    for (let col = 0; col < numCols; col++) {
       var $pixel = $('<div class="pixel">');
 
       var borderColor = parsedObject[objectNum].borderColor;
       var bgColor = parsedObject[objectNum].bgColor;
-      console.log(borderColor, bgColor);
+
+      if (borderColor !== bgColor) {
+        // borderColor = "rgb(221, 221, 221)";
+        borderColor = bgColor;
+      }
 
       $pixel.css('border-color', borderColor);
       $pixel.css('background-color', bgColor);
@@ -84,6 +96,7 @@ function deserializeGrid() {
 
     $row.appendTo($grid);
   }
+  // console.log(parsedObject.length, objectsNum);
 
   document.getElementById('open-name').value = "";
 }

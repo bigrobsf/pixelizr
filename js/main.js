@@ -1,16 +1,31 @@
 "use strict";
 
-// MAIN
+//==============================================================================
+// MAIN - start here!
 window.onload = function main() {
   buildColorPallet(undefined);
 
   document.getElementById('new-btn').addEventListener('click', buildGrid);
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
+  document.getElementById('browse-btn').addEventListener('click', function(){
+    window.open("file:///Users/rob/Documents/workspace/projects/pixelizr/api_call.html","");
+  });
+
+  checkAndBuildPxlImg();
+
   activateGrid();
 };
 
 let brushColor = 'white';
+
+function checkAndBuildPxlImg(){
+  var url = window.location.search.split('=');
+  if(url[0] === "?img"){
+    var directURL = url[1];
+    openImgInCanvas(directURL);
+  }
+}
 
 //==============================================================================
 // generate grid
@@ -32,6 +47,9 @@ function buildGrid(event) {
   }
 
   $("#grid").css("width", function(dimension) {
+    return dimension * 10;
+  });
+  $("#grid").css("height", function(dimension) {
     return dimension * 10;
   });
 
@@ -110,6 +128,7 @@ function setColorIndicator() {
 function activateGrid() {
   var grid = document.getElementById('grid');
   grid.addEventListener('click', clickGridHandler);
+  grid.addEventListener('mousedown', mDownHandler);
 }
 
 //==============================================================================
@@ -128,4 +147,31 @@ function clickGridHandler(event) {
 function setPixelColor(pixel) {
   pixel.style.borderColor = brushColor;
   pixel.style.backgroundColor = brushColor;
+}
+
+//==============================================================================
+// event handler for painting events mouseover and mouseup
+function mDownHandler(event) {
+  if (event.target === event.currentTarget) {
+    return;
+  }
+
+  grid.addEventListener('mouseup', mUpHandler);
+  grid.addEventListener('mouseover', paintRoller);
+}
+
+//==============================================================================
+// remove the painting event listener
+function mUpHandler() {
+  grid.removeEventListener('mouseover', paintRoller);
+}
+
+//==============================================================================
+// event handler to paint pixels that the mouse passes over
+function paintRoller(event) {
+  if (event.target === event.currentTarget) {
+    return;
+  }
+
+  setPixelColor(event.target);
 }
