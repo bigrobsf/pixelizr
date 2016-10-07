@@ -1,6 +1,7 @@
 "use strict";
 
-// MAIN
+//==============================================================================
+// MAIN - start here!
 window.onload = function main() {
   buildColorPallet(undefined);
 
@@ -160,7 +161,7 @@ function mDownHandler(event) {
 }
 
 //==============================================================================
-// event handler to remove the painting event listener
+// remove the painting event listener
 function mUpHandler() {
   grid.removeEventListener('mouseover', paintRoller);
 }

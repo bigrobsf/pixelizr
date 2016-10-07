@@ -1,4 +1,6 @@
 "use-strict";
+
+//==============================================================================
 // opens retrieved image in HTML Canvas element
 function openImgInCanvas(imageURL) {
   var canvas = document.createElement("canvas");
@@ -16,9 +18,10 @@ function openImgInCanvas(imageURL) {
   }
 
   img.src = imageURL;
-} // end function
+}
 
-// generates test image as divs
+//==============================================================================
+// generates pixelated image as divs
 function buildPixelatedImg(pixelationInfo) {
   var imgData   = pixelationInfo[0];
   var blockSize = 10; // forces it to fit into my ui
@@ -54,9 +57,10 @@ function buildPixelatedImg(pixelationInfo) {
 
     $row.appendTo($grid);
   }
-} // end function
+}
 
-// iterates through all blocks of calculated number of pixels
+//==============================================================================
+// iterates through all blocks of the calculated number of pixels - booyah part 2!
 function createPixelationInfo(ctx, width, height) {
   var averagedBlocks = [];
   var avgBlockColor = "";
@@ -75,8 +79,8 @@ function createPixelationInfo(ctx, width, height) {
     numCols = Math.floor(width / blockSize);
   }
 
-  console.log("w, h, blockSize, numBlocks, cols, rows: ",
-    width, height, blockSize, numBlocks, numCols, numRows);
+  // console.log("w, h, blockSize, numBlocks, cols, rows: ",
+  //  width, height, blockSize, numBlocks, numCols, numRows);
   for (var row = 0; row < numRows; row++) {
 
     for (var col = 0; col < numCols; col++) {
@@ -89,9 +93,10 @@ function createPixelationInfo(ctx, width, height) {
   }
 
   return [averagedBlocks, blockSize, numCols, numRows];
-} // end function
+}
 
-// calculates average color for a block of image pixels
+//==============================================================================
+// calculates average color for a block of image pixels - booyah part 1!
 function getAvgBlockColor(blockData) {
   var red = green = blue = i = count = 0;
   var length = blockData.length;
@@ -109,4 +114,4 @@ function getAvgBlockColor(blockData) {
   blue  = Math.floor(blue / count);
 
   return [red, green, blue];
-} // end function
+}

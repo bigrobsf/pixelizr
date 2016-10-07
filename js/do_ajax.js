@@ -39,24 +39,16 @@
 
       $action.append($selected);
       $card.append($action);
-
-      var $modal = $(`<div id="${image.id}" class="modal">`);
-      var $modalContent = $('<div class="modal-content">');
-      var $modalHeader = $('<h4>').text(image.title);
-
-      $modalContent.append($modalHeader);
-      $modal.append($modalContent);
-
-      $col.append($card, $modal);
+      $col.append($card);
 
       $('#listings').append($col);
-
-      $('.modal-trigger').leanModal();
     }
   };
 
   window.onload = doAjax;
 
+  //==============================================================================
+  // makes the AJAX request to the flickr API
   function doAjax(event) {
     event.preventDefault();
 
@@ -72,6 +64,7 @@
     $.ajax(requestObject);
   }
 
+  //==============================================================================
   // The event handler for a successful ajax request, used in doAjax
   function handleSuccess(data) {
     let imageArray = data["photos"]["photo"];
@@ -101,11 +94,12 @@
         images.push(imageElement);
       }
     }
-    console.log(imageArray.length, images.length);
+    // console.log(imageArray.length, images.length);
     document.getElementById('listings').value = "";
     renderImages();
   }
 
+  //==============================================================================
   // The event handler for a failed ajax request, used in doAjax
   function handleError(err) {
     console.log("AJAX FAILURE, WILL ROBINSON! FAILURE!");

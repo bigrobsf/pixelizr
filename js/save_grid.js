@@ -1,5 +1,7 @@
 "use strict"
 
+//==============================================================================
+// save grid data to local storage
 function serializeGrid() {
   event.preventDefault();
 
@@ -33,10 +35,10 @@ function serializeGrid() {
     }
 
     $currentRow = $currentRow.next();
-    console.log(borderColor, bgColor);
+    // console.log(borderColor, bgColor);
   }
 
-  console.log(JSON.stringify(grid));
+  // console.log(JSON.stringify(grid));
   var jsonGrid = JSON.stringify(grid);
 
   localStorage.setItem(fileName, JSON.stringify(grid));
@@ -44,7 +46,8 @@ function serializeGrid() {
   document.getElementById('save-name').value = "";
 }
 
-// Retrieve the object from storage - assumed to be square for now
+//==============================================================================
+// retrieve grid data from local storage
 function deserializeGrid() {
   event.preventDefault();
 
@@ -55,7 +58,7 @@ function deserializeGrid() {
   var lastObject = parsedObject[parsedObject.length - 1];
   var numRows = lastObject.row + 1;
   var numCols = lastObject.col + 1;
-  console.log(lastObject, numRows, numCols);
+  // console.log(lastObject, numRows, numCols);
 
 
   var $grid = $('#grid');
