@@ -11,10 +11,20 @@ window.onload = function main() {
     window.open("file:///Users/rob/Documents/workspace/projects/pixelizr/api_call.html","");
   });
 
+  checkAndBuildPxlImg();
+
   activateGrid();
 };
 
 let brushColor = 'white';
+
+function checkAndBuildPxlImg(){
+  var url = window.location.search.split('=');
+  if(url[0] === "?img"){
+    var directURL = url[1];
+    openImgInCanvas(directURL);
+  }
+}
 
 //==============================================================================
 // generate grid
@@ -36,6 +46,9 @@ function buildGrid(event) {
   }
 
   $("#grid").css("width", function(dimension) {
+    return dimension * 10;
+  });
+  $("#grid").css("height", function(dimension) {
     return dimension * 10;
   });
 
