@@ -48,6 +48,7 @@ function buildPixelatedImg(pixelationInfo) {
       var blue = imgData[blockNum][2];
 
       $block.css("background-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
+      $block.css("border-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
       $block.css("width", blockSize);
       $block.css("height", blockSize);
 

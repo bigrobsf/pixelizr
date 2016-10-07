@@ -92,6 +92,10 @@ function buildColorPallet(colors) {
   $('#pallet').addClass("z-depth-2");
   $("#current-color").addClass("z-depth-2");
 
+  // $("#colorpicker").spectrum({
+  //   color: "#f00"
+  // });
+
   var palletArray = document.getElementsByClassName('pallet-color');
 
   for (let i = 0; i < numColors; i++) {

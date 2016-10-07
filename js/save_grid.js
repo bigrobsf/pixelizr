@@ -82,11 +82,6 @@ function deserializeGrid() {
       var borderColor = parsedObject[objectNum].borderColor;
       var bgColor = parsedObject[objectNum].bgColor;
 
-      if (borderColor !== bgColor) {
-        // borderColor = "rgb(221, 221, 221)";
-        borderColor = bgColor;
-      }
-
       $pixel.css('border-color', borderColor);
       $pixel.css('background-color', bgColor);
 
