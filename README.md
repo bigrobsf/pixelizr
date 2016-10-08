@@ -1,5 +1,5 @@
 # pixelizr
-## Pixelizr extends the Pixel Art Maker homework to allow:
+## Pixelizr extends our Pixel Art Maker homework to allow:
 
 1. saving and retrieval of art using local storage
 2. dynamic creation of a “canvas” of 30 to 50 blocks square - the default is 40
