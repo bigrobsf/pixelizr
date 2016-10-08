@@ -9,7 +9,7 @@ window.onload = function main() {
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
   document.getElementById('browse-btn').addEventListener('click', function(){
-    window.open("file:///Users/rob/Documents/workspace/projects/pixelizr/api_call.html","");
+    window.open("api_call.html","");
   });
 
   checkAndBuildPxlImg();
@@ -71,7 +71,7 @@ function buildGrid(event) {
 }
 
 //==============================================================================
-// set the pallet colors and add event listener
+// set the pallet colors and add event listener - allows for passing various pallets
 function buildColorPallet(colors) {
   if (colors === undefined){
     colors = ['maroon', 'brown','red', 'orange', 'gold', 'yellow', 'olive',
@@ -92,15 +92,10 @@ function buildColorPallet(colors) {
   $('#pallet').addClass("z-depth-2");
   $("#current-color").addClass("z-depth-2");
 
-  // $("#colorpicker").spectrum({
-  //   color: "#f00"
-  // });
-
   var palletArray = document.getElementsByClassName('pallet-color');
 
   for (let i = 0; i < numColors; i++) {
     palletArray[i].style.backgroundColor = colors[i];
-
   }
 
   var pallet = document.getElementById('pallet');

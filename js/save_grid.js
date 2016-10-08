@@ -35,10 +35,8 @@ function serializeGrid() {
     }
 
     $currentRow = $currentRow.next();
-    // console.log(borderColor, bgColor);
   }
 
-  // console.log(JSON.stringify(grid));
   var jsonGrid = JSON.stringify(grid);
 
   localStorage.setItem(fileName, JSON.stringify(grid));
@@ -58,8 +56,6 @@ function deserializeGrid() {
   var lastObject = parsedObject[parsedObject.length - 1];
   var numRows = lastObject.row + 1;
   var numCols = lastObject.col + 1;
-  // console.log(lastObject, numRows, numCols);
-
 
   var $grid = $('#grid');
   $('#grid').empty();
@@ -91,7 +87,6 @@ function deserializeGrid() {
 
     $row.appendTo($grid);
   }
-  // console.log(parsedObject.length, objectsNum);
 
   document.getElementById('open-name').value = "";
 }

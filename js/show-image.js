@@ -24,7 +24,7 @@ function openImgInCanvas(imageURL) {
 // generates pixelated image as divs
 function buildPixelatedImg(pixelationInfo) {
   var imgData   = pixelationInfo[0];
-  var blockSize = 10; // forces it to fit into my ui
+  var blockSize = 10; // forces it to fit into my browser window
   var numCols   = pixelationInfo[2];
   var numRows   = pixelationInfo[3];
 
@@ -43,9 +43,9 @@ function buildPixelatedImg(pixelationInfo) {
 
     for (var col = 0; col < numCols; col++) {
       var $block = $('<div class="block">');
-      var red = imgData[blockNum][0];
+      var red =   imgData[blockNum][0];
       var green = imgData[blockNum][1];
-      var blue = imgData[blockNum][2];
+      var blue =  imgData[blockNum][2];
 
       $block.css("background-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
       $block.css("border-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
@@ -80,8 +80,6 @@ function createPixelationInfo(ctx, width, height) {
     numCols = Math.floor(width / blockSize);
   }
 
-  // console.log("w, h, blockSize, numBlocks, cols, rows: ",
-  //  width, height, blockSize, numBlocks, numCols, numRows);
   for (var row = 0; row < numRows; row++) {
 
     for (var col = 0; col < numCols; col++) {
@@ -106,7 +104,7 @@ function getAvgBlockColor(blockData) {
     red   += blockData[i];
     green += blockData[i + 1];
     blue  += blockData[i + 2];
-    i += 4; // skip a, get next red value
+    i += 4; // skip alpha channel, get next red value
     count++;
   }
 
