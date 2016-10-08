@@ -24,7 +24,7 @@
     </div>
 
     <main class="container">
-      <div class="row">
+      <div id="grid-launch" class="row">
         <form>
           <div class="col offset-s1 s6 m4">
             <div class="input-field">
@@ -44,10 +44,12 @@
 
       <div class="row"> <!-- main row -->
         <div class="col s12 m7"> <!-- holds the art grid -->
+          <p id="show-me" class="b-margin-10">Drawing Canvas</p>
           <div id="grid" class="col s12 m12 no-padding"></div>
         </div>
 
         <div class="col s12 m3 no-padding"> <!-- holds the pallet and current color -->
+          <p class="grey-text b-margin-10">Click for Color</p>
           <div id="pallet" class="col s12 m12"></div>
 
           <div id="current-color" class="col s12 m12"></div>

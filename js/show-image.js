@@ -30,6 +30,7 @@ function buildPixelatedImg(pixelationInfo) {
 
   var $grid = $('#grid');
   $('#grid').empty();
+  $('#show-me').addClass("grey-text");
 
   $("#grid").css("width", blockSize * numCols + 2);
   $("#grid").css("height", blockSize * numRows + 2);
