@@ -8,8 +8,8 @@ window.onload = function main() {
   document.getElementById('new-btn').addEventListener('click', buildGrid);
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
-  document.getElementById('browse-btn').addEventListener('click', function(){
-    window.open("api_call.html","");
+  document.getElementById('browse-btn').addEventListener('click', function() {
+    window.open("api-call.html","");
   });
 
   checkAndBuildPxlImg();
@@ -19,9 +19,9 @@ window.onload = function main() {
 
 let brushColor = 'white';
 
-function checkAndBuildPxlImg(){
+function checkAndBuildPxlImg() {
   var url = window.location.search.split('=');
-  if(url[0] === "?img"){
+  if (url[0] === "?img") {
     var directURL = url[1];
     openImgInCanvas(directURL);
   }
