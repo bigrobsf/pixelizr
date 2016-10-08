@@ -8,10 +8,10 @@
 
 ## Why?
 
-I wasn’t happy with my original Pixel Art Maker hw and was thinking about using it for my project but that seemed too simple
-until Tyler suggested importing and pixelizing an image from online - that really caught my interest because not only would
-it give me some experience using an API, but it would also require a non-trivial algorithm to pixelize the image - and I
-love non-trivial algorithms even more than I love classes.
+I wasn’t happy with my original Pixel Art Maker as submitted and was thinking about enhancing it for my project but that
+seemed too simple until Tyler suggested importing and pixelizing an image from online - that really caught my interest
+because not only would it give me some experience using an API, but it would also require a non-trivial algorithm to
+pixelize the image - and I love non-trivial algorithms even more than I love classes.
 
 ## How?
 
@@ -27,3 +27,4 @@ Lots of nested for loops. And Materialize, which looks great and is easy to use,
 6. add a button that will display the original image, perhaps as a modal
 7. make the UI responsive to different viewport sizes
 8. add an undo feature
+9. open and save an image from/to the file system like a real application!
