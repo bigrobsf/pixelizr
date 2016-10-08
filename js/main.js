@@ -33,6 +33,8 @@ function buildGrid(event) {
   $('#grid').empty();
   event.preventDefault();
 
+  $('#show-me').addClass("grey-text");
+
   let dimension = document.getElementById('grid-size').value;
   dimension = Number(dimension);
 
