@@ -25,3 +25,5 @@ Lots of nested for loops. And Materialize, which looks great and is easy to use,
 4. ability to select and open file from local storage through a drop down
 5. color-picker for custom colors
 6. add a button that will display the original image, perhaps as a modal
+7. make the UI responsive to different viewport sizes
+8. add an undo feature
