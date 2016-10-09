@@ -1,4 +1,8 @@
 # pixelizr
+
+* __note__: the project works on Chrome, Firefox, and Edge (let me know if your mileage varies.) 
+* It does NOT work (yet) on Safari or IE11 because rude. Stay tuned...
+
 ## Pixelizr extends our Pixel Art Maker homework to allow:
 
 1. saving and retrieval of art using local storage
