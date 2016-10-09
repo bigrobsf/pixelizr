@@ -48,13 +48,8 @@ function buildGrid(event) {
     var width = 40;
   }
 
-  $("#grid").css("width", function(dimension) {
-    return dimension * 10;
-  });
-  $("#grid").css("height", function(dimension) {
-    return dimension * 10;
-  });
-
+  $("#grid").css("width", width * 10 + 2);
+  $("#grid").css("height", height * 10 + 2);
   $("#grid").addClass("border");
   $("#grid").addClass("z-depth-2");
 
@@ -63,6 +58,8 @@ function buildGrid(event) {
 
     for (var col = 0; col < width; col++) {
       var $pixel = $('<div class="pixel">');
+      $pixel.css("width", 10);
+      $pixel.css("height", 10);
 
       $pixel.appendTo($row);
     }
