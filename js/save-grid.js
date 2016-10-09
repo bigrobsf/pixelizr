@@ -2,7 +2,7 @@
 
 //==============================================================================
 // save grid data to local storage
-function serializeGrid() {
+function serializeGrid(event) {
   event.preventDefault();
 
   let fileName = document.getElementById('save-name').value;
@@ -25,8 +25,11 @@ function serializeGrid() {
     var $currentPixel = $($currentRow.children()[0]);
 
     for (let col = 0; col < numCols; col++) {
-      var borderColor = $currentPixel.css('border-color');
+      var borderColor = $currentPixel.css('border-bottom-color');
+
       var bgColor = $currentPixel.css('background-color');
+
+      console.log("border: ", borderColor, "bg: ", bgColor);
 
       var pixelElement = new PixelBox(row, col, borderColor, bgColor);
       grid.push(pixelElement);
@@ -38,6 +41,7 @@ function serializeGrid() {
   }
 
   var jsonGrid = JSON.stringify(grid);
+  console.log(grid);
 
   localStorage.setItem(fileName, JSON.stringify(grid));
 
@@ -46,7 +50,7 @@ function serializeGrid() {
 
 //==============================================================================
 // retrieve grid data from local storage
-function deserializeGrid() {
+function deserializeGrid(event) {
   event.preventDefault();
 
   let fileName = document.getElementById('open-name').value;
