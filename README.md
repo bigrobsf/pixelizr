@@ -1,7 +1,7 @@
 # pixelizr
 
-* __note__: the project works on Chrome, Firefox, and Edge (let me know if your mileage varies.) 
-* It does NOT work (yet) on Safari or IE11 because rude. Stay tuned...
+* __note__: the project works on Chrome 53, Firefox 49, and Edge 38 (let me know if your mileage varies.) 
+* It does NOT work (yet) on Safari or IE 11 because __rude__. Stay tuned...
 
 ## Pixelizr extends our Pixel Art Maker homework to allow:
 
