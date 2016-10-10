@@ -19,19 +19,19 @@ function serializeGrid(event) {
   let numRows = $("#grid .grid-row").length;
   let numCols = $("div.grid-row").first().children().length;
 
-  var $currentRow = $($('#grid').children()[0]);
+  let $currentRow = $($('#grid').children()[0]);
 
   for (let row = 0; row < numRows; row++) {
-    var $currentPixel = $($currentRow.children()[0]);
+    let $currentPixel = $($currentRow.children()[0]);
 
     for (let col = 0; col < numCols; col++) {
-      var borderColor = $currentPixel.css('border-bottom-color');
+      let borderColor = $currentPixel.css('border-bottom-color');
 
-      var bgColor = $currentPixel.css('background-color');
+      let bgColor = $currentPixel.css('background-color');
 
       console.log("border: ", borderColor, "bg: ", bgColor);
 
-      var pixelElement = new PixelBox(row, col, borderColor, bgColor);
+      let pixelElement = new PixelBox(row, col, borderColor, bgColor);
       grid.push(pixelElement);
 
       $currentPixel = $currentPixel.next();
@@ -40,7 +40,7 @@ function serializeGrid(event) {
     $currentRow = $currentRow.next();
   }
 
-  var jsonGrid = JSON.stringify(grid);
+  let jsonGrid = JSON.stringify(grid);
   console.log(grid);
 
   localStorage.setItem(fileName, JSON.stringify(grid));
@@ -54,33 +54,33 @@ function deserializeGrid(event) {
   event.preventDefault();
 
   let fileName = document.getElementById('open-name').value;
-  var retrievedObject = localStorage.getItem(fileName);
-  var parsedObject = JSON.parse(retrievedObject);
+  let retrievedObject = localStorage.getItem(fileName);
+  let parsedObject = JSON.parse(retrievedObject);
 
-  var lastObject = parsedObject[parsedObject.length - 1];
-  var numRows = lastObject.row + 1;
-  var numCols = lastObject.col + 1;
+  let lastObject = parsedObject[parsedObject.length - 1];
+  let numRows = lastObject.row + 1;
+  let numCols = lastObject.col + 1;
 
-  var $grid = $('#grid');
+  let $grid = $('#grid');
   $('#grid').empty();
 
-  var dimension = Math.sqrt(parsedObject.length);
+  let dimension = Math.sqrt(parsedObject.length);
 
   $("#grid").css("width", 10 * numCols + 2);
   $("#grid").css("height", 10 * numRows + 2);
   $("#grid").addClass("z-depth-2");
   $("#grid").addClass("border");
 
-  var objectNum = 0;
+  let objectNum = 0;
 
   for (let row = 0; row < numRows; row++) {
-     var $row = $('<div class="grid-row">');
+     let $row = $('<div class="grid-row">');
 
     for (let col = 0; col < numCols; col++) {
-      var $pixel = $('<div class="pixel">');
+      let $pixel = $('<div class="pixel">');
 
-      var borderColor = parsedObject[objectNum].borderColor;
-      var bgColor = parsedObject[objectNum].bgColor;
+      let borderColor = parsedObject[objectNum].borderColor;
+      let bgColor = parsedObject[objectNum].bgColor;
 
       $pixel.css('border-color', borderColor);
       $pixel.css('background-color', bgColor);
