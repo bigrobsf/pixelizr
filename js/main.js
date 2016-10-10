@@ -20,9 +20,9 @@ window.onload = function main() {
 let brushColor = 'white';
 
 function checkAndBuildPxlImg() {
-  var url = window.location.search.split('=');
+  let url = window.location.search.split('=');
   if (url[0] === "?img") {
-    var directURL = url[1];
+    let directURL = url[1];
     openImgInCanvas(directURL);
   }
 }
@@ -53,11 +53,11 @@ function buildGrid(event) {
   $("#grid").addClass("border");
   $("#grid").addClass("z-depth-2");
 
-  for (var row = 0; row < height; row++) {
-    var $row = $('<div class="grid-row">');
+  for (let row = 0; row < height; row++) {
+    let $row = $('<div class="grid-row">');
 
-    for (var col = 0; col < width; col++) {
-      var $pixel = $('<div class="pixel">');
+    for (let col = 0; col < width; col++) {
+      let $pixel = $('<div class="pixel">');
       $pixel.css("width", 10);
       $pixel.css("height", 10);
 
@@ -82,8 +82,8 @@ function buildColorPallet(colors) {
 
   let numColors = colors.length;
 
-  for (var i = 0; i < numColors; i++) {
-    var $inkWell = $('<div class="pallet-color">');
+  for (let i = 0; i < numColors; i++) {
+    let $inkWell = $('<div class="pallet-color">');
 
     $inkWell.appendTo($pallet);
   }
@@ -91,13 +91,13 @@ function buildColorPallet(colors) {
   $('#pallet').addClass("z-depth-2");
   $("#current-color").addClass("z-depth-2");
 
-  var palletArray = document.getElementsByClassName('pallet-color');
+  let palletArray = document.getElementsByClassName('pallet-color');
 
   for (let i = 0; i < numColors; i++) {
     palletArray[i].style.backgroundColor = colors[i];
   }
 
-  var pallet = document.getElementById('pallet');
+  let pallet = document.getElementById('pallet');
   pallet.addEventListener('click', setBrushColorHandler);
 }
 
@@ -117,14 +117,14 @@ function setBrushColorHandler(event){
 //==============================================================================
 // update the color indicator with the current brush color
 function setColorIndicator() {
-  var colorIndicator = document.getElementById('current-color');
+  let colorIndicator = document.getElementById('current-color');
   colorIndicator.style.backgroundColor = brushColor;
 }
 
 //==============================================================================
 // add event listener to the grid
 function activateGrid() {
-  var grid = document.getElementById('grid');
+  let grid = document.getElementById('grid');
   grid.addEventListener('click', clickGridHandler);
   grid.addEventListener('mousedown', mDownHandler);
 }

@@ -1,26 +1,26 @@
 (function() {
   'use strict';
 
-  var images = [];
+  let images = [];
 
-  var renderImages = function() {
+  let renderImages = function() {
     $('#listings').empty();
 
-    for (var image of images) {
-      var $col = $('<div class="col s6 m4">');
-      var $card = $('<div class="card hoverable">');
-      var $content = $('<div class="card-content center">');
-      var $title = $('<h6 class="card-title truncate">');
+    for (let image of images) {
+      let $col = $('<div class="col s6 m4">');
+      let $card = $('<div class="card hoverable">');
+      let $content = $('<div class="card-content center">');
+      let $title = $('<h6 class="card-title truncate">');
 
       $title.attr({
         'data-position': 'top',
         'data-tooltip': image.title
       });
 
-      $title.tooltip({ delay: 50, });
+      $title.tooltip({delay: 50});
       $title.text(image.title);
 
-      var $picture = $('<img class="picture">');
+      let $picture = $('<img class="picture">');
 
       $picture.attr({
         src: image.thumbURL,
@@ -30,8 +30,8 @@
       $content.append($title, $picture);
       $card.append($content);
 
-      var $action = $('<div class="card-action center">');
-      var $selected = $('<a class="waves-effect waves-light btn modal-trigger">');
+      let $action = $('<div class="card-action center">');
+      let $selected = $('<a class="waves-effect waves-light btn modal-trigger">');
 
       $selected.attr('href', `index.html?img=${image.imageURL}`);
 
@@ -69,7 +69,7 @@
   function handleSuccess(data) {
     let imageArray = data["photos"]["photo"];
 
-    var Image = function(id, height, width, owner, title, server, farm, secret, thumbURL, imageURL) {
+    var PhotoImage = function(id, height, width, owner, title, server, farm, secret, thumbURL, imageURL) {
       this.id = id || "";
       this.height = Number(height) || 0;
       this.width = Number(width) || 0;
@@ -82,8 +82,8 @@
       this.imageURL = imageURL || "";
     }
 
-    for (var i = 0; i < imageArray.length; i++) {
-      var imageElement = new Image (imageArray[i].id, imageArray[i].height_c,
+    for (let i = 0; i < imageArray.length; i++) {
+      let imageElement = new PhotoImage (imageArray[i].id, imageArray[i].height_c,
         imageArray[i].width_c, imageArray[i].owner,
         imageArray[i].title, imageArray[i].server, imageArray[i].farm,
         imageArray[i].secret, imageArray[i].url_q, imageArray[i].url_c);
