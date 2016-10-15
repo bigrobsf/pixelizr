@@ -9,7 +9,7 @@ window.onload = function main() {
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
   document.getElementById('browse-btn').addEventListener('click', function() {
-    window.open("api-call.html","");
+    window.open("api-call.ejs","");
   });
 
   checkAndBuildPxlImg();

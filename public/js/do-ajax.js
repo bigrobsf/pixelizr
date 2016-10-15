@@ -33,7 +33,7 @@
       let $action = $('<div class="card-action center">');
       let $selected = $('<a class="waves-effect waves-light btn modal-trigger">');
 
-      $selected.attr('href', `index.html?img=${image.imageURL}`);
+      $selected.attr('href', `index.ejs?img=${image.imageURL}`);
 
       $selected.text('Select');
 
