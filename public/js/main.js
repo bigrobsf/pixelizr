@@ -9,7 +9,7 @@ window.onload = function main() {
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
   document.getElementById('browse-btn').addEventListener('click', function() {
-    window.open("api-call.ejs","");
+    window.open("api-call","");
   });
 
   checkAndBuildPxlImg();
@@ -21,8 +21,10 @@ let brushColor = 'white';
 
 function checkAndBuildPxlImg() {
   let url = window.location.search.split('=');
+  
   if (url[0] === "?img") {
     let directURL = url[1];
+
     openImgInCanvas(directURL);
   }
 }

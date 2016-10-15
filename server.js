@@ -12,12 +12,16 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// route for image selected from flickr api call
+app.get('/index.ejs', function(req, res) {
+  res.render('index');
+});
+
 app.get('/index', function(req, res) {
   res.render('index');
 });
 
 app.get('/api-call', function(req, res) {
-  console.log("in the api-call route");
   res.render('api-call');
 });
 
