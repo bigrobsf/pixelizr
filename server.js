@@ -4,13 +4,13 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var ejs = require('ejs');
 
 app.set("view engine", "ejs");
 
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // route for image selected from flickr api call
 app.get('/index.ejs', function(req, res) {
