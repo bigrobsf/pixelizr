@@ -1,4 +1,7 @@
 "use strict";
+/* jshint esversion: 6 */
+/* jshint devel:true */
+/* jshint node: true */
 
 //==============================================================================
 // MAIN - start here!
@@ -21,7 +24,7 @@ let brushColor = 'white';
 
 function checkAndBuildPxlImg() {
   let url = window.location.search.split('=');
-  
+
   if (url[0] === "?img") {
     let directURL = url[1];
 
@@ -42,12 +45,15 @@ function buildGrid(event) {
 
   let $grid = $('#grid');
 
+  var height = 0;
+  var width = 0;
+
   if (typeof dimension === "number" && dimension >= 30 && dimension <= 50) {
-    var height = dimension;
-    var width = dimension;
+    height = dimension;
+    width = dimension;
   } else {
-    var height = 40;
-    var width = 40;
+    height = 40;
+    width = 40;
   }
 
   $("#grid").css("width", width * 10 + 2);

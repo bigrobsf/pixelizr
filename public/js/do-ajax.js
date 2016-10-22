@@ -1,5 +1,9 @@
+'use strict';
+/* jshint esversion: 6 */
+/* jshint devel:true */
+/* jshint node: true */
+
 (function() {
-  'use strict';
 
   let images = [];
 
@@ -67,7 +71,7 @@
   //==============================================================================
   // The event handler for a successful ajax request, used in doAjax
   function handleSuccess(data) {
-    let imageArray = data["photos"]["photo"];
+    let imageArray = data.photos.photo;
 
     var PhotoImage = function(id, height, width, owner, title, server, farm, secret, thumbURL, imageURL) {
       this.id = id || "";
@@ -80,7 +84,7 @@
       this.secret = secret || "";
       this.thumbURL = thumbURL || "";
       this.imageURL = imageURL || "";
-    }
+    };
 
     for (let i = 0; i < imageArray.length; i++) {
       let imageElement = new PhotoImage (imageArray[i].id, imageArray[i].height_c,

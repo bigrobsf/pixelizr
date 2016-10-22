@@ -1,4 +1,7 @@
 "use strict"
+/* jshint esversion: 6 */
+/* jshint devel:true */
+/* jshint node: true */
 
 //==============================================================================
 // save grid data to local storage
