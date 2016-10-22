@@ -1,0 +1,19 @@
+{
+  "name": "pixelizr",
+  "version": "1.0.0",
+  "description": "First Quarter Project: Image art maker to create new and load saved art as well as import images via an API to modify and save",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "url": "git@github.com:bigrobsf/pixelizr.git",
+    "type": "git"
+  },
+  "author": "Rob <rjconner@mac.com>",
+  "license": "All Rights Reserved, Copyright Rob Conner 2016",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0"
+  }
+}
