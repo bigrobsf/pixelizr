@@ -1,4 +1,7 @@
-"use strict"
+"use strict";
+/* jshint esversion: 6 */
+/* jshint devel:true */
+/* jshint node: true */
 
 //==============================================================================
 // save grid data to local storage
@@ -14,7 +17,7 @@ function serializeGrid(event) {
     this.col = col;
     this.borderColor = borderColor;
     this.bgColor = bgColor;
-  }
+  };
 
   let numRows = $("#grid .grid-row").length;
   let numCols = $("div.grid-row").first().children().length;

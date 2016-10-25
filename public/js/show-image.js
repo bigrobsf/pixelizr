@@ -1,4 +1,7 @@
 "use-strict";
+/* jshint esversion: 6 */
+/* jshint devel:true */
+/* jshint node: true */
 
 //==============================================================================
 // opens retrieved image in HTML Canvas element
@@ -15,7 +18,7 @@ function openImgInCanvas(imageURL) {
 
     let pixelationInfo = createPixelationInfo(ctx, img.width, img.height);
     buildPixelatedImg(pixelationInfo);
-  }
+  };
 
   img.src = imageURL;
 }
@@ -85,7 +88,7 @@ function createPixelationInfo(ctx, width, height) {
 
     for (let col = 0; col < numCols; col++) {
       let imgd = ctx.getImageData(col * blockSize, row * blockSize, blockSize, blockSize);
-      let blockData = imgd["data"];
+      let blockData = imgd.data;
 
       avgBlockColor = getAvgBlockColor(blockData);
       averagedBlocks.push(avgBlockColor);
