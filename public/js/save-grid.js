@@ -1,7 +1,9 @@
-"use strict";
+'use strict';
 /* jshint esversion: 6 */
 /* jshint devel:true */
 /* jshint node: true */
+/* jshint browser: true */
+/* jshint jquery: true */
 
 //==============================================================================
 // save grid data to local storage
@@ -19,8 +21,8 @@ function serializeGrid(event) {
     this.bgColor = bgColor;
   };
 
-  let numRows = $("#grid .grid-row").length;
-  let numCols = $("div.grid-row").first().children().length;
+  let numRows = $('#grid .grid-row').length;
+  let numCols = $('div.grid-row').first().children().length;
 
   let $currentRow = $($('#grid').children()[0]);
 
@@ -32,7 +34,7 @@ function serializeGrid(event) {
 
       let bgColor = $currentPixel.css('background-color');
 
-      console.log("border: ", borderColor, "bg: ", bgColor);
+      console.log('border: ', borderColor, 'bg: ', bgColor);
 
       let pixelElement = new PixelBox(row, col, borderColor, bgColor);
       grid.push(pixelElement);
@@ -48,7 +50,7 @@ function serializeGrid(event) {
 
   localStorage.setItem(fileName, JSON.stringify(grid));
 
-  document.getElementById('save-name').value = "";
+  document.getElementById('save-name').value = '';
 }
 
 //==============================================================================
@@ -69,10 +71,10 @@ function deserializeGrid(event) {
 
   let dimension = Math.sqrt(parsedObject.length);
 
-  $("#grid").css("width", 10 * numCols + 2);
-  $("#grid").css("height", 10 * numRows + 2);
-  $("#grid").addClass("z-depth-2");
-  $("#grid").addClass("border");
+  $('#grid').css('width', 10 * numCols + 2);
+  $('#grid').css('height', 10 * numRows + 2);
+  $('#grid').addClass('z-depth-2');
+  $('#grid').addClass('border');
 
   let objectNum = 0;
 
@@ -95,5 +97,5 @@ function deserializeGrid(event) {
     $row.appendTo($grid);
   }
 
-  document.getElementById('open-name').value = "";
+  document.getElementById('open-name').value = '';
 }

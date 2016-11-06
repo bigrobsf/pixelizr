@@ -2,6 +2,8 @@
 /* jshint esversion: 6 */
 /* jshint devel:true */
 /* jshint node: true */
+/* jshint browser: true */
+/* jshint jquery: true */
 
 (function() {
 
@@ -74,16 +76,16 @@
     let imageArray = data.photos.photo;
 
     var PhotoImage = function(id, height, width, owner, title, server, farm, secret, thumbURL, imageURL) {
-      this.id = id || "";
+      this.id = id || '';
       this.height = Number(height) || 0;
       this.width = Number(width) || 0;
-      this.owner = owner || "";
-      this.title = title || "Untitled";
-      this.server = server || "";
+      this.owner = owner || '';
+      this.title = title || 'Untitled';
+      this.server = server || '';
       this.farm = farm || 0;
-      this.secret = secret || "";
-      this.thumbURL = thumbURL || "";
-      this.imageURL = imageURL || "";
+      this.secret = secret || '';
+      this.thumbURL = thumbURL || '';
+      this.imageURL = imageURL || '';
     };
 
     for (let i = 0; i < imageArray.length; i++) {
@@ -99,14 +101,14 @@
       }
     }
     // console.log(imageArray.length, images.length);
-    document.getElementById('listings').value = "";
+    document.getElementById('listings').value = '';
     renderImages();
   }
 
   //==============================================================================
   // The event handler for a failed ajax request, used in doAjax
   function handleError(err) {
-    console.log("AJAX FAILURE, WILL ROBINSON! FAILURE!");
+    console.log('AJAX FAILURE, WILL ROBINSON! FAILURE!');
     console.log(err);
   }
 })();
