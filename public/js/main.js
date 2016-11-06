@@ -1,7 +1,9 @@
-"use strict";
+'use strict';
 /* jshint esversion: 6 */
 /* jshint devel:true */
 /* jshint node: true */
+/* jshint browser: true */
+/* globals $:false */
 
 //==============================================================================
 // MAIN - start here!
@@ -12,7 +14,7 @@ window.onload = function main() {
   document.getElementById('save-btn').addEventListener('click', serializeGrid);
   document.getElementById('open-btn').addEventListener('click', deserializeGrid);
   document.getElementById('browse-btn').addEventListener('click', function() {
-    window.open("api-call","");
+    window.open('api-call','');
   });
 
   checkAndBuildPxlImg();
@@ -25,7 +27,7 @@ let brushColor = 'white';
 function checkAndBuildPxlImg() {
   let url = window.location.search.split('=');
 
-  if (url[0] === "?img") {
+  if (url[0] === '?img') {
     let directURL = url[1];
 
     openImgInCanvas(directURL);
@@ -38,7 +40,7 @@ function buildGrid(event) {
   $('#grid').empty();
   event.preventDefault();
 
-  $('#show-me').addClass("grey-text");
+  $('#show-me').addClass('grey-text');
 
   let dimension = document.getElementById('grid-size').value;
   dimension = Number(dimension);
@@ -48,7 +50,7 @@ function buildGrid(event) {
   var height = 0;
   var width = 0;
 
-  if (typeof dimension === "number" && dimension >= 30 && dimension <= 50) {
+  if (typeof dimension === 'number' && dimension >= 30 && dimension <= 50) {
     height = dimension;
     width = dimension;
   } else {
@@ -56,25 +58,25 @@ function buildGrid(event) {
     width = 40;
   }
 
-  $("#grid").css("width", width * 10 + 2);
-  $("#grid").css("height", height * 10 + 2);
-  $("#grid").addClass("border");
-  $("#grid").addClass("z-depth-2");
+  $('#grid').css('width', width * 10 + 2);
+  $('#grid').css('height', height * 10 + 2);
+  $('#grid').addClass('border');
+  $('#grid').addClass('z-depth-2');
 
   for (let row = 0; row < height; row++) {
     let $row = $('<div class="grid-row">');
 
     for (let col = 0; col < width; col++) {
       let $pixel = $('<div class="pixel">');
-      $pixel.css("width", 10);
-      $pixel.css("height", 10);
+      $pixel.css('width', 10);
+      $pixel.css('height', 10);
 
       $pixel.appendTo($row);
     }
     $row.appendTo($grid);
   }
 
-  document.getElementById('grid-size').value = "";
+  document.getElementById('grid-size').value = '';
 }
 
 //==============================================================================
@@ -96,8 +98,8 @@ function buildColorPallet(colors) {
     $inkWell.appendTo($pallet);
   }
 
-  $('#pallet').addClass("z-depth-2");
-  $("#current-color").addClass("z-depth-2");
+  $('#pallet').addClass('z-depth-2');
+  $('#current-color').addClass('z-depth-2');
 
   let palletArray = document.getElementsByClassName('pallet-color');
 

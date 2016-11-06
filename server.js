@@ -1,15 +1,15 @@
-"use strict";
+'use strict';
 /* jshint esversion: 6 */
 /* jshint devel:true */
 /* jshint node: true */
 
-const express = require("express");
+const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3002;
 
 var ejs = require('ejs');
 
-app.set("view engine", "ejs");
+app.set('view engine', 'ejs');
 
 app.use(express.static('public'));
 

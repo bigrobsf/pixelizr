@@ -1,4 +1,4 @@
-"use-strict";
+'use-strict';
 /* jshint esversion: 6 */
 /* jshint devel:true */
 /* jshint node: true */
@@ -6,10 +6,10 @@
 //==============================================================================
 // opens retrieved image in HTML Canvas element
 function openImgInCanvas(imageURL) {
-  let canvas = document.createElement("canvas");
+  let canvas = document.createElement('canvas');
   let ctx = canvas.getContext('2d');
   let img = new Image();
-  img.crossOrigin = "anonymous";
+  img.crossOrigin = 'anonymous';
 
   img.onload = function() {
     canvas.width = img.width;
@@ -33,12 +33,12 @@ function buildPixelatedImg(pixelationInfo) {
 
   let $grid = $('#grid');
   $('#grid').empty();
-  $('#show-me').addClass("grey-text");
+  $('#show-me').addClass('grey-text');
 
-  $("#grid").css("width", blockSize * numCols + 2);
-  $("#grid").css("height", blockSize * numRows + 2);
-  $("#grid").addClass("z-depth-2");
-  $("#grid").addClass("border");
+  $('#grid').css('width', blockSize * numCols + 2);
+  $('#grid').css('height', blockSize * numRows + 2);
+  $('#grid').addClass('z-depth-2');
+  $('#grid').addClass('border');
 
   let blockNum = 0;
 
@@ -51,10 +51,10 @@ function buildPixelatedImg(pixelationInfo) {
       let green = imgData[blockNum][1];
       let blue =  imgData[blockNum][2];
 
-      $block.css("background-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
-      $block.css("border-color", 'rgb(' + red + ',' + green + ',' + blue + ')');
-      $block.css("width", blockSize);
-      $block.css("height", blockSize);
+      $block.css('background-color', 'rgb(' + red + ',' + green + ',' + blue + ')');
+      $block.css('border-color', 'rgb(' + red + ',' + green + ',' + blue + ')');
+      $block.css('width', blockSize);
+      $block.css('height', blockSize);
 
       $block.appendTo($row);
       blockNum++;
@@ -68,7 +68,7 @@ function buildPixelatedImg(pixelationInfo) {
 // iterates through all blocks of the calculated number of pixels - booyah part 2!
 function createPixelationInfo(ctx, width, height) {
   let averagedBlocks = [];
-  let avgBlockColor = "";
+  let avgBlockColor = '';
   let numBlocks = 50;
   let blockSize = 0;
   let numRows = 0;
