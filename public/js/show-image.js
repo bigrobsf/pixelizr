@@ -69,9 +69,7 @@ function buildPixelatedImg(pixelationInfo) {
 function createPixelationInfo(ctx, width, height) {
   let averagedBlocks = [];
   let avgBlockColor = '';
-  let invertedColor = '';
-  let greyscale = '';
-  let numBlocks = 50; // original value was 50
+  let numBlocks = 50;
   let blockSize = 0;
   let numRows = 0;
   let numCols = 0;
