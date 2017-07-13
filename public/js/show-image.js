@@ -27,7 +27,7 @@ function openImgInCanvas(imageURL) {
 // generates pixelated image as divs
 function buildPixelatedImg(pixelationInfo) {
   let imgData   = pixelationInfo[0];
-  let blockSize = 2; // original value was 10
+  let blockSize = 10; // original value was 10
   let numCols   = pixelationInfo[2];
   let numRows   = pixelationInfo[3];
 
