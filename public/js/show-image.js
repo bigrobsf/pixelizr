@@ -27,7 +27,7 @@ function openImgInCanvas(imageURL) {
 // generates pixelated image as divs
 function buildPixelatedImg(pixelationInfo) {
   let imgData   = pixelationInfo[0];
-  let blockSize = 10; // forces it to fit into my browser window
+  let blockSize = 2; // original value was 10
   let numCols   = pixelationInfo[2];
   let numRows   = pixelationInfo[3];
 
@@ -69,7 +69,9 @@ function buildPixelatedImg(pixelationInfo) {
 function createPixelationInfo(ctx, width, height) {
   let averagedBlocks = [];
   let avgBlockColor = '';
-  let numBlocks = 50;
+  let invertedColor = '';
+  let greyscale = '';
+  let numBlocks = 50; // original value was 50
   let blockSize = 0;
   let numRows = 0;
   let numCols = 0;
